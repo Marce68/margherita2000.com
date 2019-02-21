@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v2.0
+  if (document.MM_swapImgData != null)
+    for (var i=0; i<(document.MM_swapImgData.length-1); i+=2)
+      document.MM_swapImgData[i].src = document.MM_swapImgData[i+1];
+}
+
+function MM_preloadImages() { //v2.0
+  if (document.images) {
+    var imgFiles = MM_preloadImages.arguments;
+    if (document.preloadArray==null) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with (document) for (var j=0; j<imgFiles.length; j++) if (imgFiles[j].charAt(0)!="#"){
+      preloadArray[i] = new Image;
+      preloadArray[i++].src = imgFiles[j];
+  } }
+}
+
+function MM_swapImage() { //v2.0
+  var i,j=0,objStr,obj,swapArray=new Array,oldArray=document.MM_swapImgData;
+  for (i=0; i < (MM_swapImage.arguments.length-2); i+=3) {
+    objStr = MM_swapImage.arguments[(navigator.appName == 'Netscape')?i:i+1];
+    if ((objStr.indexOf('document.layers[')==0 && document.layers==null) ||
+        (objStr.indexOf('document.all[')   ==0 && document.all   ==null))
+      objStr = 'document'+objStr.substring(objStr.lastIndexOf('.'),objStr.length);
+    obj = eval(objStr);
+    if (obj != null) {
+      swapArray[j++] = obj;
+      swapArray[j++] = (oldArray==null || oldArray[j-1]!=obj)?obj.src:oldArray[j];
+      obj.src = MM_swapImage.arguments[i+2];
+  } }
+  document.MM_swapImgData = swapArray; //used for restore
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#000068" onLoad="MM_preloadImages('img/agendaa1.jpg','#938019264110');MM_preloadImages('../img/g1ok.jpg','#943531235460')" background="../img/bg.jpg">
+<div id="fondo" style="position:absolute; left:0px; top:0px; width:535px; height:480px; z-index:1"><img src="../img/bgcentro.jpg" width="536" height="480"></div>
+<div id="Layer1" style="position:absolute; left:183px; top:108px; width:150px; height:145px; z-index:2"><a href="agenda2.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.layers[\'Layer1\'].document.Image2','document.Image2','img/agendaa1.jpg','#938019264110')"><img name="Image2" border="0" src="img/agendas1.jpg" width="150" height="145"></a></div>
+<div id="Layer3" style="position:absolute; left:190px; top:59px; width:130px; height:29px; z-index:4"><img src="../img/08BTIT.GIF" width="125" height="29"></div>
+<div id="Layer2" style="position:absolute; left:66px; top:270px; width:391px; height:112px; z-index:3"> 
+  <div align="center"><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="006868">La 
+    cucina è il posto ideale per lasciare messaggi per i membri della famiglia, 
+    e Leon@rdo è il centro della cucina. <br>
+    Con la funzione Notes puoi scrivere appunti e lasciare messaggi che possano 
+    essere facilmente consultati da tutti. Con il Calendario invece puoi organizzare 
+    appuntamenti e ricorrenze molto più facilmente di quanto hai fatto finora. 
+    </font><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000068"> 
+    </font></div>
+</div>
+<div id="Layer4" style="position:absolute; left:502px; top:446px; width:33px; height:33px; z-index:5"><a href="ag_main.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.layers[\'Layer4\'].document.Image4','document.Image4','../img/g1ok.jpg','#943531235460')"><img name="Image4" border="0" src="../img/g1ko.jpg" width="33" height="33" alt="INDIETRO"></a></div>
+</body>
+</html>

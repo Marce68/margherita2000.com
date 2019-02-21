@@ -1,0 +1,88 @@
+Internet Explorer 5 e Accesso a Internet 
+Vengono di seguito elencate le caratteristiche disponibili al momento del download 
+dell'installazione completa di Internet Explorer 5 e Accesso a Internet. E possibile aggiungere o 
+rimuovere qualsiasi componente dopo l'installazione di Internet Explorer 5. 
+
+Browser Web Internet Explorer 5: il browser che introduce la tecnologia IntelliSenseTM per 
+velocizzare l'esecuzione delle attivita' ripetitive.
+
+Outlook Express 5: consente di inviare facilmente messaggi di posta elettronica, di sottoscrivere 
+newsgroup Internet, di filtrare automaticamente la posta indesiderata e di utilizzare elementi 
+decorativi colorati per attirare l'attenzione del lettore oppure di creare motivi personalizzati in 
+base allo stile personale.
+
+Lettore multimediale versione 6.0: Lettore multimediale Microsoft aggiorna le versioni 
+precedenti del riproduttore omonimo e dei riproduttori NetShow e ActiveMovie ed esegue la 
+maggior parte dei formati di contenuto multimediale che si trovano in Internet o sul computer, 
+inclusi i formati ASF (Advanced Streaming Format), Real Audio/RealVideo 4.0, QuickTime, AVI, 
+WAV, MPEG, MP3 e molti altri.
+
+Chat 2.5: consente di comunicare all'interno di gruppi di conversazione su Internet. E possibile 
+esprimere sentimenti reali scegliendo il personaggio e le espressioni in modalita' Fumetto.
+
+NetMeeting 2.11: consente di utilizzare il computer di casa come un videotelefono per avere un 
+contatto visivo e parlare con familiari o amici. Al lavoro consente di partecipare a riunioni di affari 
+e di condividere programmi per collaborare a progetti sul Web.
+
+FrontPage Express 2.0: FrontPage Express semplifica la creazione di pagine Web da parte di 
+autori ancora poco esperti del Web senza la necessita' di apprendere il linguaggio di 
+programmazione HTML.
+
+Pubblicazione guidata sul Web versione 1.6: consente di utilizzare un semplice strumento per 
+la pubblicazione delle pagine Web.
+
+Microsoft Virtual Machine: consente di sperimentare animazioni e altre funzionalita' avanzate 
+relative alle pagine Web eseguendo le applicazioni Java sul computer nel modo piu' veloce e 
+affidabile.
+
+Connessione guidata Internet: consente di connettersi al Web in modo semplice e veloce. La 
+procedura guidata e' completamente automatica e consente di effettuare una sottoscrizione a un 
+provider di servizi Internet.
+
+Modulo per l'esplorazione non in linea: consente di velocizzare la consultazione delle pagine 
+Web in assenza di connessione. Si tratta di un componente necessario se si utilizza un computer 
+laptop o se si sono verificati problemi durante l'esplorazione non in linea.
+
+Wallet 3: semplifica, velocizza e rende sicuro l'acquisto in siti Web protetti, memorizzando i 
+numeri delle carte di credito e le informazioni relative agli indirizzi in un "portafoglio" virtuale 
+all'interno del computer.
+
+Agente 2.0: e' possibile utilizzare questa funzionalita' per visualizzare caratteri animati presenti in 
+guide interattive e funzionalita' di intrattenimento contenute in alcuni siti Web.
+
+Guida in linea di Internet Explorer: consente di apprendere nozioni relative al browser di 
+Windows e di avere facilmente a disposizione informazioni e istruzioni molto importanti.
+
+Caratteri principali di Internet Explorer: consentono di migliorare l'aspetto delle pagine Web 
+utilizzando i caratteri TrueType creati appositamente per rendere la lettura piu' agevole.
+
+Dynamic HTML Data Binding: consente di ordinare e filtrare le informazioni presenti sul Web 
+con incredibile velocita'. Il binding dei dati elimina la necessita' di ricollegarsi al server Web ogni 
+volta che si effettua una ricerca all'interno di una pagina per visualizzare informazioni diverse.
+
+Componenti avanzati per l'esplorazione di Internet Explorer: consentono di utilizzare file e 
+cartelle collocate su server di download di siti FTP Internet nello stesso modo in cui si utilizzano 
+file e cartelle collocate sul computer.
+
+Visualizzatore VRML 2.0: e' possibile utilizzare questo visualizzatore per verificare l'effetto 
+globale delle pagine Web che possiedono caratteristiche di realta' virtuale.
+
+DirectAnimation: consente di potenziare le caratteristiche multimediali e di animazione del 
+computer sul Web e in alcuni prodotti software.
+
+Vector Graphics Rendering (VML): consente di visualizzare e creare grafica vettoriale per il 
+Web. Le immagini vettoriali sono costituite da linee invece che da punti. In questo modo si ottiene 
+una maggiore flessibilita' e una maggiore chiarezza durante la visualizzazione ad alta risoluzione.
+
+Supporto immagine in formato AOL ART: consente di visualizzare immagini Web create nel 
+formato di file AOL ART tipiche delle pagine presenti nel sito Web di America Online. E possibile 
+effettuarne il download ora, senza dover attendere che questo componente venga installato la 
+prima volta che viene reperita una pagina Web contenente un'immagine in formato AOL ART.
+
+Supporto Visual Basic Scripting: questa funzionalita' e' stata installata sul computer al momento 
+dell'installazione di Windows. Le prestazioni sono state considerevolmente potenziate in questa 
+versione aggiornata rispetto a quelle precedenti consentendo di velocizzare gli script.
+
+Caratteri Web supplementari di Internet Explorer: consentono di visualizzare le pagine Web 
+nel modo previsto installando questa serie di caratteri TrueTyper creati appositamente per essere 
+utilizzati sul Web.

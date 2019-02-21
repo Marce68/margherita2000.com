@@ -1,0 +1,266 @@
+<html>
+<head>
+<title>Ariston Channel</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v2.0
+  if (document.MM_swapImgData != null)
+    for (var i=0; i<(document.MM_swapImgData.length-1); i+=2)
+      document.MM_swapImgData[i].src = document.MM_swapImgData[i+1];
+}
+
+function MM_preloadImages() { //v2.0
+  if (document.images) {
+    var imgFiles = MM_preloadImages.arguments;
+    if (document.preloadArray==null) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with (document) for (var j=0; j<imgFiles.length; j++) if (imgFiles[j].charAt(0)!="#"){
+      preloadArray[i] = new Image;
+      preloadArray[i++].src = imgFiles[j];
+  } }
+}
+
+function MM_swapImage() { //v2.0
+  var i,j=0,objStr,obj,swapArray=new Array,oldArray=document.MM_swapImgData;
+  for (i=0; i < (MM_swapImage.arguments.length-2); i+=3) {
+    objStr = MM_swapImage.arguments[(navigator.appName == 'Netscape')?i:i+1];
+    if ((objStr.indexOf('document.layers[')==0 && document.layers==null) ||
+        (objStr.indexOf('document.all[')   ==0 && document.all   ==null))
+      objStr = 'document'+objStr.substring(objStr.lastIndexOf('.'),objStr.length);
+    obj = eval(objStr);
+    if (obj != null) {
+      swapArray[j++] = obj;
+      swapArray[j++] = (oldArray==null || oldArray[j-1]!=obj)?obj.src:oldArray[j];
+      obj.src = MM_swapImage.arguments[i+2];
+  } }
+  document.MM_swapImgData = swapArray; //used for restore
+}
+
+function MM_showHideLayers() { //v2.0
+  var i, visStr, args, theObj;
+  args = MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) { //with arg triples (objNS,objIE,visStr)
+    visStr   = args[i+2];
+    if (navigator.appName == 'Netscape' && document.layers != null) {
+      theObj = eval(args[i]);
+      if (theObj) theObj.visibility = visStr;
+    } else if (document.all != null) { //IE
+      if (visStr == 'show') visStr = 'visible'; //convert vals
+      if (visStr == 'hide') visStr = 'hidden';
+      theObj = eval(args[i+1]);
+      if (theObj) theObj.style.visibility = visStr;
+  } }
+}
+
+function MM_timelineGoto(tmLnName, fNew, numGotos) { //v2.0
+  //Copyright 1997 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,lastKeyFr,propNum,theObj;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (numGotos != null)
+    if (tmLn.gotoCount == null) tmLn.gotoCount = 1;
+    else if (tmLn.gotoCount++ >= numGotos) {tmLn.gotoCount=0; return}
+  jmpFwd = (fNew > tmLn.curFrame);
+  for (i = 0; i < tmLn.length; i++) {
+    sprite = (jmpFwd)? tmLn[i] : tmLn[(tmLn.length-1)-i]; //count bkwds if jumping back
+    if (sprite.charAt(0) == "s") {
+      numKeyFr = sprite.keyFrames.length;
+      firstKeyFr = sprite.keyFrames[0];
+      lastKeyFr = sprite.keyFrames[numKeyFr - 1];
+      if ((jmpFwd && fNew<firstKeyFr) || (!jmpFwd && lastKeyFr<fNew)) continue; //skip if untouchd
+      for (keyFrm=1; keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]; keyFrm++);
+      for (j=0; j<sprite.values.length; j++) {
+        props = sprite.values[j];
+        if (numKeyFr == props.length) propNum = keyFrm-1 //keyframes only
+        else propNum = Math.min(Math.max(0,fNew-firstKeyFr),props.length-1); //or keep in legal range
+        if (sprite.obj != null) {
+          if (props.prop2 == null) sprite.obj[props.prop] = props[propNum];
+          else        sprite.obj[props.prop2][props.prop] = props[propNum];
+      } }
+    } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+  }
+  tmLn.curFrame = fNew;
+  if (tmLn.ID == 0) eval('MM_timelinePlay(tmLnName)');
+}
+
+function MM_timelinePlay(tmLnName, myID) { //v1.2
+  //Copyright 1997 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,propNum,theObj,firstTime=false;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (myID == null) { myID = ++tmLn.ID; firstTime=true;}//if new call, incr ID
+  if (myID == tmLn.ID) { //if Im newest
+    setTimeout('MM_timelinePlay("'+tmLnName+'",'+myID+')',tmLn.delay);
+    fNew = ++tmLn.curFrame;
+    for (i=0; i<tmLn.length; i++) {
+      sprite = tmLn[i];
+      if (sprite.charAt(0) == 's') {
+        if (sprite.obj) {
+          numKeyFr = sprite.keyFrames.length; firstKeyFr = sprite.keyFrames[0];
+          if (fNew >= firstKeyFr && fNew <= sprite.keyFrames[numKeyFr-1]) {//in range
+            keyFrm=1;
+            for (j=0; j<sprite.values.length; j++) {
+              props = sprite.values[j]; 
+              if (numKeyFr != props.length) {
+                if (props.prop2 == null) sprite.obj[props.prop] = props[fNew-firstKeyFr];
+                else        sprite.obj[props.prop2][props.prop] = props[fNew-firstKeyFr];
+              } else {
+                while (keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]) keyFrm++;
+                if (firstTime || fNew==sprite.keyFrames[keyFrm-1]) {
+                  if (props.prop2 == null) sprite.obj[props.prop] = props[keyFrm-1];
+                  else        sprite.obj[props.prop2][props.prop] = props[keyFrm-1];
+        } } } } }
+      } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+      if (fNew > tmLn.lastFrame) tmLn.ID = 0;
+  } }
+}
+
+function MM_initTimelines() {
+    //MM_initTimelines() Copyright 1997 Macromedia, Inc. All rights reserved.
+    var ns = navigator.appName == "Netscape";
+    document.MM_Time = new Array(1);
+    document.MM_Time[0] = new Array(2);
+    document.MM_Time["Timeline1"] = document.MM_Time[0];
+    document.MM_Time[0].MM_Name = "Timeline1";
+    document.MM_Time[0].fps = 15;
+    document.MM_Time[0][0] = new String("sprite");
+    document.MM_Time[0][0].slot = 1;
+    if (ns)
+        document.MM_Time[0][0].obj = document["gioco"];
+    else
+        document.MM_Time[0][0].obj = document.all ? document.all["gioco"] : null;
+    document.MM_Time[0][0].keyFrames = new Array(1, 3, 4, 7, 10, 13, 17, 20, 23, 26, 28, 29, 30, 38, 46, 55, 63, 72, 81, 89, 98, 100);
+    document.MM_Time[0][0].values = new Array(2);
+    document.MM_Time[0][0].values[0] = new Array(697,699,698,672,671,672,672,668,662,653,642,629,614,600,584,568,552,532,513,492,469,444,419,395,372,347,301,265,267,275,281,288,296,306,316,326,337,347,356,365,374,383,392,401,410,419,427,436,444,452,460,469,477,484,492,500,508,515,523,530,537,545,552,559,566,573,581,588,595,601,608,614,619,625,629,634,638,642,646,650,653,657,660,663,665,667,669,671,672,673,673,673,672,672,671,671,671,672,686,697);
+    document.MM_Time[0][0].values[0].prop = "left";
+    document.MM_Time[0][0].values[1] = new Array(111,106,100,100,118,139,164,191,219,246,268,289,308,323,337,351,363,376,386,395,404,411,417,421,423,424,420,416,417,418,419,419,420,421,422,423,424,424,424,424,423,422,421,420,419,417,415,413,411,409,406,404,401,398,395,392,388,385,381,377,373,368,363,358,352,347,341,334,328,321,315,308,302,295,289,282,275,268,261,254,246,236,226,215,205,194,184,174,164,156,148,141,134,128,121,116,110,105,105,111);
+    document.MM_Time[0][0].values[1].prop = "top";
+    if (!ns) {
+        document.MM_Time[0][0].values[0].prop2 = "style";
+        document.MM_Time[0][0].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][1] = new String("behavior");
+    document.MM_Time[0][1].frame = 101;
+    document.MM_Time[0][1].value = "MM_timelineGoto('Timeline1','1')";
+    document.MM_Time[0].lastFrame = 101;
+    for (i=0; i<document.MM_Time.length; i++) {
+        document.MM_Time[i].ID = null;
+        document.MM_Time[i].curFrame = 0;
+        document.MM_Time[i].delay = 1000/document.MM_Time[i].fps;
+    }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#006868" onLoad="MM_preloadImages('../img/h1ok.gif','#938591877880');MM_preloadImages('../img/h3ok.gif','#938592078080');MM_preloadImages('../img/h4ok.gif','#938592135590');MM_preloadImages('../img/h5ok.gif','#938592351440');MM_preloadImages('../img/h6ok.gif','#938592430260');MM_preloadImages('../img/h7ok.gif','#938592512270');MM_preloadImages('../img/h8ok.gif','#938592582300');MM_preloadImages('../img/h9ok.gif','#938592653750');MM_timelinePlay('Timeline1');MM_preloadImages('../img/h2ok.gif','#943611475560');MM_preloadImages('../img/aridiga.gif','#943899642330')" background="../img/bg.gif">
+<div id="fondo" style="position:absolute; left:0px; top:0px; width:724px; height:473px; z-index:1; visibility: visible"><img src="../img/fondohp.gif" width="750" height="500"></div>
+<div id="b1" style="position:absolute; left:70px; top:70px; width:46px; height:46px; z-index:2"><a href="../casa/casa.htm" onMouseOut="MM_swapImgRestore();MM_showHideLayers('document.layers[\'t1\']','document.all[\'t1\']','hide','document.layers[\'didconsu\']','document.all[\'didconsu\']','hide')" onMouseOver="MM_swapImage('document.layers[\'b1\'].document.Image23','document.Image23','../img/h1ok.gif','#938591877880');MM_showHideLayers('document.layers[\'t1\']','document.all[\'t1\']','show','document.layers[\'didconsu\']','document.all[\'didconsu\']','show')" target="_top"><img name="Image23" border="0" src="../img/h1ko.gif" width="46" height="46"></a></div>
+<div id="b2" style="position:absolute; left:25px; top:118px; width:59px; height:50px; z-index:3"><a href="../leonardo/leo.htm" onMouseOut="MM_swapImgRestore();MM_showHideLayers('document.layers[\'t2\']','document.all[\'t2\']','hide','document.layers[\'didshop\']','document.all[\'didshop\']','hide')" onMouseOver="MM_swapImage('document.layers[\'b2\'].document.Image22','document.Image22','../img/h2ok.gif','#943611475560');MM_showHideLayers('document.layers[\'t2\']','document.all[\'t2\']','show','document.layers[\'didshop\']','document.all[\'didshop\']','show')"><img name="Image22" border="0" src="../img/h2ko.gif" width="59" height="50"></a></div>
+<div id="b3" style="position:absolute; left:19px; top:174px; width:46px; height:46px; z-index:4"><a href="../consumi/consumi.htm" onMouseOut="MM_swapImgRestore();MM_showHideLayers('document.layers[\'t3\']','document.all[\'t3\']','hide','document.layers[\'diddiag\']','document.all[\'diddiag\']','hide')" onMouseOver="MM_swapImage('document.layers[\'b3\'].document.Image25','document.Image25','../img/h3ok.gif','#938592078080');MM_showHideLayers('document.layers[\'t3\']','document.all[\'t3\']','show','document.layers[\'diddiag\']','document.all[\'diddiag\']','show')" target="_top"><img name="Image25" border="0" src="../img/h3ko.gif" width="46" height="46"></a></div>
+<div id="b4" style="position:absolute; left:13px; top:227px; width:46px; height:46px; z-index:5"><a href="../allarme/sos.htm" onMouseOut="MM_swapImgRestore();MM_showHideLayers('document.layers[\'t4\']','document.all[\'t4\']','hide','document.layers[\'didalla\']','document.all[\'didalla\']','hide')" onMouseOver="MM_swapImage('document.layers[\'b4\'].document.Image26','document.Image26','../img/h4ok.gif','#938592135590');MM_showHideLayers('document.layers[\'t4\']','document.all[\'t4\']','show','document.layers[\'didalla\']','document.all[\'didalla\']','show')" target="_top"><img name="Image26" border="0" src="../img/h4ko.gif" width="46" height="46"></a></div>
+<div id="b5" style="position:absolute; left:30px; top:281px; width:46px; height:46px; z-index:6"><a href="../cooking/cook.htm" onMouseOut="MM_swapImgRestore();MM_showHideLayers('document.layers[\'t5\']','document.all[\'t5\']','hide','document.layers[\'didcook\']','document.all[\'didcook\']','hide')" onMouseOver="MM_swapImage('document.layers[\'b5\'].document.Image27','document.Image27','../img/h5ok.gif','#938592351440');MM_showHideLayers('document.layers[\'t5\']','document.all[\'t5\']','show','document.layers[\'didcook\']','document.all[\'didcook\']','show')" target="_top"><img name="Image27" border="0" src="../img/h5ko.gif" width="46" height="46"></a></div>
+<div id="b6" style="position:absolute; left:56px; top:334px; width:46px; height:46px; z-index:8"><a href="../elettrod/elettrod.htm" onMouseOut="MM_swapImgRestore();MM_showHideLayers('document.layers[\'t6\']','document.all[\'t6\']','hide','document.layers[\'didelet\']','document.all[\'didelet\']','hide')" onMouseOver="MM_swapImage('document.layers[\'b6\'].document.Image28','document.Image28','../img/h6ok.gif','#938592430260');MM_showHideLayers('document.layers[\'t6\']','document.all[\'t6\']','show','document.layers[\'didelet\']','document.all[\'didelet\']','show')" target="_top"><img name="Image28" border="0" src="../img/h6ko.gif" width="46" height="46"></a></div>
+<div id="b7" style="position:absolute; left:106px; top:378px; width:46px; height:46px; z-index:9"><a href="../servizi/servizi.htm" onMouseOut="MM_swapImgRestore();MM_showHideLayers('document.layers[\'t7\']','document.all[\'t7\']','hide','document.layers[\'didcentro\']','document.all[\'didcentro\']','hide')" onMouseOver="MM_swapImage('document.layers[\'b7\'].document.Image29','document.Image29','../img/h7ok.gif','#938592512270');MM_showHideLayers('document.layers[\'t7\']','document.all[\'t7\']','show','document.layers[\'didcentro\']','document.all[\'didcentro\']','show')" target="_top"><img name="Image29" border="0" src="../img/h7ko.gif" width="46" height="46"></a></div>
+<div id="b8" style="position:absolute; left:158px; top:416px; width:46px; height:46px; z-index:10"><a href="../agenda/agenda.htm" onMouseOut="MM_swapImgRestore();MM_showHideLayers('document.layers[\'t8\']','document.all[\'t8\']','hide','document.layers[\'didage\']','document.all[\'didage\']','hide')" onMouseOver="MM_swapImage('document.layers[\'b8\'].document.Image30','document.Image30','../img/h8ok.gif','#938592582300');MM_showHideLayers('document.layers[\'t8\']','document.all[\'t8\']','show','document.layers[\'didage\']','document.all[\'didage\']','show')" target="_top"><img name="Image30" border="0" src="../img/h8ko.gif" width="46" height="46"></a></div>
+<div id="b9" style="position:absolute; left:230px; top:441px; width:46px; height:46px; z-index:11"><a href="../web/web.htm" onMouseOut="MM_swapImgRestore();MM_showHideLayers('document.layers[\'t9\']','document.all[\'t9\']','hide','document.layers[\'didweb\']','document.all[\'didweb\']','hide')" onMouseOver="MM_swapImage('document.layers[\'b9\'].document.Image31','document.Image31','../img/h9ok.gif','#938592653750');MM_showHideLayers('document.layers[\'t9\']','document.all[\'t9\']','show','document.layers[\'didweb\']','document.all[\'didweb\']','show')" target="_top"><img name="Image31" border="0" src="../img/h9ko.gif" width="46" height="46"></a></div>
+<div id="t1" style="position:absolute; left:123px; top:94px; width:138px; height:18px; z-index:12; visibility: hidden"><img src="../img/t01.gif" width="133" height="15"></div>
+<div id="t2" style="position:absolute; left:91px; top:142px; width:91px; height:15px; z-index:13; visibility: hidden"><img src="../img/t02.gif" width="81" height="11"></div>
+<div id="t3" style="position:absolute; left:70px; top:197px; width:162px; height:16px; z-index:14; visibility: hidden"><img src="../img/t03.gif" width="154" height="12"></div>
+<div id="t4" style="position:absolute; left:64px; top:245px; width:135px; height:19px; z-index:15; visibility: hidden"><img src="../img/t04.gif" width="124" height="12"></div>
+<div id="t5" style="position:absolute; left:81px; top:296px; width:92px; height:23px; z-index:16; visibility: hidden"><img src="../img/t05.gif" width="84" height="15"></div>
+<div id="t6" style="position:absolute; left:107px; top:332px; width:148px; height:32px; z-index:17; visibility: hidden"><img src="../img/t06.gif" width="140" height="27"></div>
+<div id="t7" style="position:absolute; left:157px; top:391px; width:204px; height:15px; z-index:18; visibility: hidden"><img src="../img/t07.gif" width="192" height="15"></div>
+<div id="t8" style="position:absolute; left:209px; top:412px; width:184px; height:19px; z-index:19; visibility: hidden"><img src="../img/t08.gif" width="179" height="15"></div>
+<div id="t9" style="position:absolute; left:281px; top:440px; width:39px; height:20px; z-index:20; visibility: hidden"><img src="../img/t09.gif" width="34" height="11"></div>
+<div id="t10" style="position:absolute; left:400px; top:151px; width:174px; height:30px; z-index:21; visibility: hidden"><img src="../../img/t10.jpg" width="174" height="30"></div>
+<div id="didconsu" style="position:absolute; left:331px; top:137px; width:303px; height:197px; z-index:24; background-image:      url(../img/chiaro.gif); layer-background-image:      url(../img/chiaro.gif); border: 1px none #000000; visibility: hidden"> 
+  <div align="center">
+    <p>&nbsp;</p>
+    <p> <font face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#000066" size="3">A 
+      monte di un grande progetto fatto di tecnologia e servizi, ci sono intuizioni 
+      e passioni culturali che credono nell'introduzione in tutta la casa del 
+      mondo digitale.</font></b></font></p>
+    </div>
+</div>
+<div id="diddiag" style="position:absolute; left:331px; top:137px; width:303px; height:198px; z-index:25; background-image:      url(../img/chiaro.gif); layer-background-image:      url(../img/chiaro.gif); border: 1px none #000000; visibility: hidden"> 
+  <div align="center"> 
+    <p>&nbsp;</p>
+    <p> <font face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#000066">Grazie 
+      a questo servizio potrai tenere sotto controllo i consumi energetici di 
+      casa...</font></b></font></p>
+    </div>
+</div>
+<div id="didalla" style="position:absolute; left:331px; top:137px; width:303px; height:198px; z-index:26; background-image:      url(../img/chiaro.gif); layer-background-image:      url(../img/chiaro.gif); border: 1px none #000000; visibility: hidden"> 
+  <div align="center"> 
+    <p>&nbsp;</p>
+    <p><font face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#000066">L'assistenza 
+      per prevenire <br>
+      guasti e rimediare a problemi entra in rete per essere attiva costantemente...</font></b></font></p>
+    </div>
+</div>
+<div id="didcentro" style="position:absolute; left:331px; top:137px; width:303px; height:198px; z-index:27; background-image:      url(../img/chiaro.gif); layer-background-image:      url(../img/chiaro.gif); border: 1px none #000000; visibility: hidden"> 
+  <div align="center"> 
+    <p>&nbsp;</p>
+    <p><font size="3" color="#000066" face="Verdana, Arial, Helvetica, sans-serif"><b>Un 
+      aiuto sempre disponibile <br>
+      sulla base di un rapporto personalizzato e di supporti tecnologici all'avanguardia...</b></font></p>
+    </div>
+</div>
+<div id="didcook" style="position:absolute; left:331px; top:137px; width:303px; height:198px; z-index:28; background-image:      url(../img/chiaro.gif); layer-background-image:      url(../img/chiaro.gif); border: 1px none #000000; visibility: hidden"> 
+  <div align="center"> 
+    <p><br>
+      <br>
+    </p>
+    <p><font size="3" color="#000066" face="Verdana, Arial, Helvetica, sans-serif"><b>Con 
+      la funzione E-cooking, puoi accedere direttamente al sito Internet aristonchannel.com 
+      e catturare le ricette di cuochi di tutto il mondo...</b></font></p>
+  </div>
+</div>
+<div id="didelet" style="position:absolute; left:331px; top:137px; width:303px; height:198px; z-index:29; background-image:      url(../img/chiaro.gif); layer-background-image:      url(../img/chiaro.gif); border: 1px none #000000; visibility: hidden"> 
+  <div align="center"> 
+    <p> <br>
+    </p>
+    <p><font size="3" color="#000066" face="Verdana, Arial, Helvetica, sans-serif"><b>Puoi 
+      monitorare i tuoi elettrodomestici digitali, verificandone il funzionamento, 
+      <br>
+      le informazioni che si stanno scambiando ed eventualmente intervenire per 
+      regolarne i consumi....</b></font></p>
+  </div>
+</div>
+<div id="didshop" style="position:absolute; left:331px; top:137px; width:303px; height:198px; z-index:30; background-image:      url(../img/chiaro.gif); layer-background-image:      url(../img/chiaro.gif); border: 1px none #000000; visibility: hidden"> 
+  <div align="center"> 
+    <p> <br>
+    </p>
+    <p><br>
+      <font face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#000066" size="3">L'espressione 
+      pi&ugrave; evoluta della tecnologia WRAP ed il completamento ideale della 
+      linea Ariston Digital...</font></b></font></p>
+    </div>
+</div>
+<div id="didage" style="position:absolute; left:331px; top:137px; width:303px; height:198px; z-index:31; background-image:      url(../img/chiaro.gif); layer-background-image:      url(../img/chiaro.gif); border: 1px none #000000; visibility: hidden"> 
+  <div align="center"> 
+    <p> <br>
+      <font size="3" color="#000066" face="Verdana, Arial, Helvetica, sans-serif"><b><br>
+      Non solo elettrodomestici, ma <br>
+      la gestione di tutta la casa <br>
+      intesa in un modo efficiente <br>
+      e confortevole...</b></font></p>
+  </div>
+</div>
+<div id="didweb" style="position:absolute; left:331px; top:137px; width:303px; height:198px; z-index:32; background-image:      url(../img/chiaro.gif); layer-background-image:      url(../img/chiaro.gif); border: 1px none #000000; visibility: hidden"> 
+  <div align="center"> 
+    <p><br>
+    </p>
+    <p><br>
+      <font size="3" color="#000066" face="Verdana, Arial, Helvetica, sans-serif"><b>Oltre 
+      la casa, verso il grande mondo di internet....</b></font></p>
+    </div>
+</div>
+<div id="gioco" style="position:absolute; left:697px; top:111px; width:50px; height:50px; z-index:33"><a href="../gioco/gioco.htm" onMouseOver="MM_showHideLayers('document.layers[\'didagioco\']','document.all[\'didagioco\']','show')" onMouseOut="MM_showHideLayers('document.layers[\'didagioco\']','document.all[\'didagioco\']','hide')"><img name="image1" src="../img/game.gif" width="50" height="50" border="0"></a></div>
+<div id="didagioco" style="position:absolute; left:502px; top:454px; width:179px; height:31px; z-index:34; visibility: hidden"><b><img src="../img/t10.gif" width="177" height="30"></b></div>
+<div id="chioc" style="position:absolute; left:335px; top:133px; width:243px; height:212px; z-index:22; visibility: visible"><a href="../wrap/wrap.htm"><img name="image2" src="../img/chioc.gif" width="243" height="212" border="0"></a></div>
+<div id="Layer1" style="position:absolute; left:684px; top:272px; width:65px; height:230px; z-index:35"><a href="../../../sito/it/digital/digital.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.layers[\'Layer1\'].document.Image24','document.Image24','../img/aridiga.gif','#943899642330')" target="_blank"><img name="Image24" border="0" src="../img/aridigs.gif" width="65" height="230"></a></div>
+</body>
+</html>

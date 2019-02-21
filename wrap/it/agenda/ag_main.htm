@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v2.0
+  if (document.MM_swapImgData != null)
+    for (var i=0; i<(document.MM_swapImgData.length-1); i+=2)
+      document.MM_swapImgData[i].src = document.MM_swapImgData[i+1];
+}
+
+function MM_preloadImages() { //v2.0
+  if (document.images) {
+    var imgFiles = MM_preloadImages.arguments;
+    if (document.preloadArray==null) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with (document) for (var j=0; j<imgFiles.length; j++) if (imgFiles[j].charAt(0)!="#"){
+      preloadArray[i] = new Image;
+      preloadArray[i++].src = imgFiles[j];
+  } }
+}
+
+function MM_swapImage() { //v2.0
+  var i,j=0,objStr,obj,swapArray=new Array,oldArray=document.MM_swapImgData;
+  for (i=0; i < (MM_swapImage.arguments.length-2); i+=3) {
+    objStr = MM_swapImage.arguments[(navigator.appName == 'Netscape')?i:i+1];
+    if ((objStr.indexOf('document.layers[')==0 && document.layers==null) ||
+        (objStr.indexOf('document.all[')   ==0 && document.all   ==null))
+      objStr = 'document'+objStr.substring(objStr.lastIndexOf('.'),objStr.length);
+    obj = eval(objStr);
+    if (obj != null) {
+      swapArray[j++] = obj;
+      swapArray[j++] = (oldArray==null || oldArray[j-1]!=obj)?obj.src:oldArray[j];
+      obj.src = MM_swapImage.arguments[i+2];
+  } }
+  document.MM_swapImgData = swapArray; //used for restore
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#006868" onLoad="MM_preloadImages('img/agendaa.jpg','#938019264110');MM_preloadImages('img/shoppa.jpg','#943530048300')" background="../img/bg.jpg">
+<div id="fondo" style="position:absolute; left:0px; top:0px; width:535px; height:480px; z-index:1"><img src="../img/bgcentro.jpg" width="536" height="480"></div>
+<div id="Layer1" style="position:absolute; left:305px; top:90px; width:146px; height:143px; z-index:2"><a href="ag_main2.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('parent.frames[\'centrale\'].document.layers[\'Layer1\'].document.Image2','parent.frames[\'centrale\'].document.Image2','img/agendaa.jpg','#938019264110')"><img name="Image2" border="0" src="img/agendas.jpg" width="146" height="143"></a></div>
+<div id="Layer3" style="position:absolute; left:85px; top:41px; width:357px; height:37px; z-index:4"><img src="../img/08TIT.GIF" width="348" height="31"></div>
+<div id="Layer4" style="position:absolute; left:75px; top:90px; width:140px; height:143px; z-index:5"><a href="sho_main.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('parent.frames[\'centrale\'].document.layers[\'Layer4\'].document.Image24','parent.frames[\'centrale\'].document.Image24','img/shoppa.jpg','#943530048300')"><img name="Image24" border="0" src="img/shopps.jpg" width="140" height="143"></a></div>
+<div id="Layer2" style="position:absolute; left:77px; top:269px; width:379px; height:57px; z-index:6"><font size="2" color="#006868" face="Verdana, Arial, Helvetica, sans-serif">Ariston 
+  Digital non &egrave; solo una linea di elettrodomestici e di servizi: con Leon@rdo 
+  crea un nuovo modo di vivere la casa, fare shopping, prendere appuntamenti...</font></div>
+</body>
+</html>

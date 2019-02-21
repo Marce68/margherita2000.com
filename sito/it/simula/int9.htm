@@ -1,0 +1,202 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v2.0
+  if (document.MM_swapImgData != null)
+    for (var i=0; i<(document.MM_swapImgData.length-1); i+=2)
+      document.MM_swapImgData[i].src = document.MM_swapImgData[i+1];
+}
+
+function MM_preloadImages() { //v2.0
+  if (document.images) {
+    var imgFiles = MM_preloadImages.arguments;
+    if (document.preloadArray==null) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with (document) for (var j=0; j<imgFiles.length; j++) if (imgFiles[j].charAt(0)!="#"){
+      preloadArray[i] = new Image;
+      preloadArray[i++].src = imgFiles[j];
+  } }
+}
+
+function MM_swapImage() { //v2.0
+  var i,j=0,objStr,obj,swapArray=new Array,oldArray=document.MM_swapImgData;
+  for (i=0; i < (MM_swapImage.arguments.length-2); i+=3) {
+    objStr = MM_swapImage.arguments[(navigator.appName == 'Netscape')?i:i+1];
+    if ((objStr.indexOf('document.layers[')==0 && document.layers==null) ||
+        (objStr.indexOf('document.all[')   ==0 && document.all   ==null))
+      objStr = 'document'+objStr.substring(objStr.lastIndexOf('.'),objStr.length);
+    obj = eval(objStr);
+    if (obj != null) {
+      swapArray[j++] = obj;
+      swapArray[j++] = (oldArray==null || oldArray[j-1]!=obj)?obj.src:oldArray[j];
+      obj.src = MM_swapImage.arguments[i+2];
+  } }
+  document.MM_swapImgData = swapArray; //used for restore
+}
+
+function MM_showHideLayers() { //v2.0
+  var i, visStr, args, theObj;
+  args = MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) { //with arg triples (objNS,objIE,visStr)
+    visStr   = args[i+2];
+    if (navigator.appName == 'Netscape' && document.layers != null) {
+      theObj = eval(args[i]);
+      if (theObj) theObj.visibility = visStr;
+    } else if (document.all != null) { //IE
+      if (visStr == 'show') visStr = 'visible'; //convert vals
+      if (visStr == 'hide') visStr = 'hidden';
+      theObj = eval(args[i+1]);
+      if (theObj) theObj.style.visibility = visStr;
+  } }
+}
+
+function MM_timelinePlay(tmLnName, myID) { //v1.2
+  //Copyright 1997 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,propNum,theObj,firstTime=false;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (myID == null) { myID = ++tmLn.ID; firstTime=true;}//if new call, incr ID
+  if (myID == tmLn.ID) { //if Im newest
+    setTimeout('MM_timelinePlay("'+tmLnName+'",'+myID+')',tmLn.delay);
+    fNew = ++tmLn.curFrame;
+    for (i=0; i<tmLn.length; i++) {
+      sprite = tmLn[i];
+      if (sprite.charAt(0) == 's') {
+        if (sprite.obj) {
+          numKeyFr = sprite.keyFrames.length; firstKeyFr = sprite.keyFrames[0];
+          if (fNew >= firstKeyFr && fNew <= sprite.keyFrames[numKeyFr-1]) {//in range
+            keyFrm=1;
+            for (j=0; j<sprite.values.length; j++) {
+              props = sprite.values[j]; 
+              if (numKeyFr != props.length) {
+                if (props.prop2 == null) sprite.obj[props.prop] = props[fNew-firstKeyFr];
+                else        sprite.obj[props.prop2][props.prop] = props[fNew-firstKeyFr];
+              } else {
+                while (keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]) keyFrm++;
+                if (firstTime || fNew==sprite.keyFrames[keyFrm-1]) {
+                  if (props.prop2 == null) sprite.obj[props.prop] = props[keyFrm-1];
+                  else        sprite.obj[props.prop2][props.prop] = props[keyFrm-1];
+        } } } } }
+      } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+      if (fNew > tmLn.lastFrame) tmLn.ID = 0;
+  } }
+}
+
+function MM_initTimelines() {
+    //MM_initTimelines() Copyright 1997 Macromedia, Inc. All rights reserved.
+    var ns = navigator.appName == "Netscape";
+    document.MM_Time = new Array(4);
+    document.MM_Time[0] = new Array(2);
+    document.MM_Time["Timeline1"] = document.MM_Time[0];
+    document.MM_Time[0].MM_Name = "Timeline1";
+    document.MM_Time[0].fps = 15;
+    document.MM_Time[0][0] = new String("behavior");
+    document.MM_Time[0][0].frame = 1;
+    document.MM_Time[0][0].value = "MM_showHideLayers('document.layers[\\\'mamma\\\']','document.all[\\\'mamma\\\']','hide','document.layers[\\\'mparto\\\']','document.all[\\\'mparto\\\']','show','document.layers[\\\'tparto\\\']','document.all[\\\'tparto\\\']','show','document.layers[\\\'mmam\\\']','document.all[\\\'mmam\\\']','hide','document.layers[\\\'tmam\\\']','document.all[\\\'tmam\\\']','hide')";
+    document.MM_Time[0][1] = new String("behavior");
+    document.MM_Time[0][1].frame = 8;
+    document.MM_Time[0][1].value = "MM_showHideLayers('document.layers[\\\'parto\\\']','document.all[\\\'parto\\\']','hide','document.layers[\\\'Layer4\\\']','document.all[\\\'Layer4\\\']','show')";
+    document.MM_Time[0].lastFrame = 8;
+    document.MM_Time[1] = new Array(2);
+    document.MM_Time["Timeline2"] = document.MM_Time[1];
+    document.MM_Time[1].MM_Name = "Timeline2";
+    document.MM_Time[1].fps = 15;
+    document.MM_Time[1][0] = new String("behavior");
+    document.MM_Time[1][0].frame = 1;
+    document.MM_Time[1][0].value = "MM_showHideLayers('document.layers[\\\'parto\\\']','document.all[\\\'parto\\\']','hide','document.layers[\\\'mparto\\\']','document.all[\\\'mparto\\\']','hide','document.layers[\\\'tparto\\\']','document.all[\\\'tparto\\\']','hide','document.layers[\\\'mmam\\\']','document.all[\\\'mmam\\\']','show','document.layers[\\\'tmam\\\']','document.all[\\\'tmam\\\']','show')";
+    document.MM_Time[1][1] = new String("behavior");
+    document.MM_Time[1][1].frame = 8;
+    document.MM_Time[1][1].value = "MM_showHideLayers('document.layers[\\\'Layer4\\\']','document.all[\\\'Layer4\\\']','show')";
+    document.MM_Time[1].lastFrame = 8;
+    document.MM_Time[2] = new Array(2);
+    document.MM_Time["Timeline3"] = document.MM_Time[2];
+    document.MM_Time[2].MM_Name = "Timeline3";
+    document.MM_Time[2].fps = 10;
+    document.MM_Time[2][0] = new String("behavior");
+    document.MM_Time[2][0].frame = 8;
+    document.MM_Time[2][0].value = "MM_showHideLayers('document.layers[\\\'lavat\\\']','document.all[\\\'lavat\\\']','hide','document.layers[\\\'lavani\\\']','document.all[\\\'lavani\\\']','show','document.layers[\\\'clessi\\\']','document.all[\\\'clessi\\\']','hide')";
+    document.MM_Time[2][1] = new String("behavior");
+    document.MM_Time[2][1].frame = 1;
+    document.MM_Time[2][1].value = "MM_showHideLayers('document.layers[\\\'comandi\\\']','document.all[\\\'comandi\\\']','hide','document.layers[\\\'mparto\\\']','document.all[\\\'mparto\\\']','hide','document.layers[\\\'tparto\\\']','document.all[\\\'tparto\\\']','hide','document.layers[\\\'mmam\\\']','document.all[\\\'mmam\\\']','hide','document.layers[\\\'tmam\\\']','document.all[\\\'tmam\\\']','hide')";
+    document.MM_Time[2].lastFrame = 8;
+    document.MM_Time[3] = new Array(1);
+    document.MM_Time["Timeline4"] = document.MM_Time[3];
+    document.MM_Time[3].MM_Name = "Timeline4";
+    document.MM_Time[3].fps = 15;
+    document.MM_Time[3][0] = new String("behavior");
+    document.MM_Time[3][0].frame = 100;
+    document.MM_Time[3][0].value = "MM_showHideLayers('document.layers[\\\'comandi\\\']','document.all[\\\'comandi\\\']','hide','document.layers[\\\'mparto\\\']','document.all[\\\'mparto\\\']','hide','document.layers[\\\'tparto\\\']','document.all[\\\'tparto\\\']','hide','document.layers[\\\'lavat\\\']','document.all[\\\'lavat\\\']','hide','document.layers[\\\'lavani\\\']','document.all[\\\'lavani\\\']','show','document.layers[\\\'mmam\\\']','document.all[\\\'mmam\\\']','hide','document.layers[\\\'tmam\\\']','document.all[\\\'tmam\\\']','hide','document.layers[\\\'clessi\\\']','document.all[\\\'clessi\\\']','hide','document.layers[\\\'frase\\\']','document.all[\\\'frase\\\']','hide')";
+    document.MM_Time[3].lastFrame = 100;
+    for (i=0; i<document.MM_Time.length; i++) {
+        document.MM_Time[i].ID = null;
+        document.MM_Time[i].curFrame = 0;
+        document.MM_Time[i].delay = 1000/document.MM_Time[i].fps;
+    }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" onLoad="MM_preloadImages('../../prova/img/gook.jpg','#943974290750');MM_preloadImages('../../prova/img/backok.jpg','#943977829870');MM_preloadImages('internet/mammaa.jpg','#943987649950');MM_preloadImages('internet/partob.jpg','#943987661260');MM_preloadImages('internet/oka.jpg','#943987851960');MM_preloadImages('internet/oka.jpg','#943989126570')">
+<div id="Layer2" style="position:absolute; left:522px; top:0px; width:110px; height:378px; z-index:2"><img src="img/latdx.jpg" width="185" height="378"></div>
+<div id="Layer5" style="position:absolute; left:478px; top:339px; width:77px; height:35px; z-index:5"><a href="int8.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.layers[\'Layer5\'].document.Image4','document.Image4','../../prova/img/backok.jpg','#943977829870')"><img name="Image4" src="../../prova/img/backko.jpg" width="30" height="35" border="0"></a><a href="simula2.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.layers[\'Layer5\'].document.Image5','document.Image5','../../prova/img/gook.jpg','#943974290750')"><img name="Image5" border="0" src="../../prova/img/goko.jpg" width="32" height="35"></a></div>
+<div id="comandi" style="position:absolute; left:0px; top:202px; width:448px; height:178px; z-index:6; visibility: visible"><img src="internet/comandi.jpg" width="448" height="178"></div>
+<div id="Layer3" style="position:absolute; left:12px; top:10px; width:548px; height:174px; z-index:6; visibility: visible"> 
+  <p><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">Quale 
+    situazione scegli? </font></p>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="126">
+    <tr>
+      <td width="17%"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.layers[\'Layer3\'].document.Image1','document.Image1','internet/mammaa.jpg','#943987649950')" onClick="MM_showHideLayers('document.layers[\'Layer3\']','document.all[\'Layer3\']','hide','document.layers[\'mamma\']','document.all[\'mamma\']','show','document.layers[\'mparto\']','document.all[\'mparto\']','hide','document.layers[\'tparto\']','document.all[\'tparto\']','hide')"><img src="internet/mammab.jpg" width="67" height="53" border="0" name="Image1"></a></font></td>
+      <td width="83%"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">La 
+        madre premurosa a 1000 giri.</font></td>
+    </tr>
+    <tr>
+      <td width="17%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.layers[\'Layer3\'].document.Image2','document.Image2','internet/partob.jpg','#943987661260')" onClick="MM_showHideLayers('document.layers[\'Layer3\']','document.all[\'Layer3\']','hide','document.layers[\'parto\']','document.all[\'parto\']','show')"><img src="internet/partoa.jpg" width="67" height="53" border="0" name="Image2"></a></font></td>
+      <td width="83%"> 
+        <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000">Ho 
+          troppo da fare, clicco e parto! </font></p>
+        </td>
+    </tr>
+  </table>
+  
+</div>
+<div id="mamma" style="position:absolute; left:29px; top:32px; width:449px; height:154px; z-index:7; visibility: hidden"> 
+  <p><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">Mentre 
+    ero in ufficio, mio figlio è tornato a casa dalla gita con la scuola. 5 giorni 
+    in giro per l'Italia, 5 ragazze baciate, 5 chili di magliette e pantaloni 
+    messi dentro la lavatrice. <br>
+    Programmo margherita2000.com su Cotone, 60°, 1000 giri di centrifuga, inserisco 
+    il pulsante Antimacchia. </font></p>
+  <p align="center"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.layers[\'mamma\'].document.Image14','document.Image14','internet/oka.jpg','#943989126570')" onClick="MM_showHideLayers('document.layers[\'mamma\']','document.all[\'mamma\']','hide','document.layers[\'mparto\']','document.all[\'mparto\']','hide','document.layers[\'tparto\']','document.all[\'tparto\']','hide','document.layers[\'mmam\']','document.all[\'mmam\']','show','document.layers[\'tmam\']','document.all[\'tmam\']','show');MM_timelinePlay('Timeline2')"><img name="Image14" border="0" src="internet/okb.jpg" width="64" height="51"></a></p>
+</div>
+<div id="parto" style="position:absolute; left:18px; top:17px; width:431px; height:167px; z-index:7; visibility: hidden"> 
+  <p><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">Sono 
+    in ufficio. Un nuovo impegno inatteso: una partenza improvvisa domani mattina 
+    per Parigi. Per fortuna ho lasciato in lavatrice i miei due maglioni di cachemire 
+    preferiti. Se metto in funzione margherita, quando stasera ritorno a casa 
+    potrò stenderli e per domami mattina saranno asciutti. <br>
+    Vado su www.margherita2000.com, seleziono il programma Cachemire, scelgo 400 
+    giri di centrifuga, 30° e pulsante Antipiega. </font></p>
+  <p align="center"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.layers[\'parto\'].document.Image7','document.Image7','internet/oka.jpg','#943987851960')" onClick="MM_timelinePlay('Timeline1')"><img name="Image7" border="0" src="internet/okb.jpg" width="64" height="51"></a></p>
+</div>
+<div id="mparto" style="position:absolute; left:302px; top:228px; width:142px; height:150px; z-index:8; visibility: hidden"><img src="internet/rotella2.jpg" width="142" height="150"></div>
+<div id="tparto" style="position:absolute; left:26px; top:207px; width:47px; height:81px; z-index:9; visibility: hidden"><img src="internet/piegaon.jpg" width="42" height="75"></div>
+<div id="Layer4" style="position:absolute; left:26px; top:27px; width:432px; height:178px; z-index:10; visibility: hidden"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">E 
+  adesso scegli quando vuoi farla partire. <br>
+  <a href="#" onClick="MM_timelinePlay('Timeline3');MM_showHideLayers('document.layers[\'comandi\']','document.all[\'comandi\']','hide','document.layers[\'mparto\']','document.all[\'mparto\']','hide','document.layers[\'tparto\']','document.all[\'tparto\']','hide','document.layers[\'lavat\']','document.all[\'lavat\']','show','document.layers[\'mmam\']','document.all[\'mmam\']','hide','document.layers[\'tmam\']','document.all[\'tmam\']','hide','document.layers[\'clessi\']','document.all[\'clessi\']','show')"><img src="internet/secondi.gif" width="120" height="51" border="0"></a><br>
+  <a href="#" onClick="MM_showHideLayers('document.layers[\'comandi\']','document.all[\'comandi\']','hide','document.layers[\'mparto\']','document.all[\'mparto\']','hide','document.layers[\'tparto\']','document.all[\'tparto\']','hide','document.layers[\'lavat\']','document.all[\'lavat\']','show','document.layers[\'mmam\']','document.all[\'mmam\']','hide','document.layers[\'tmam\']','document.all[\'tmam\']','hide','document.layers[\'clessi\']','document.all[\'clessi\']','show','document.layers[\'frase\']','document.all[\'frase\']','show');MM_timelinePlay('Timeline4')"><img src="internet/minuto.gif" width="120" height="51" border="0"></a><br>
+  <img name="image1" src="internet/orol3.gif" width="120" height="51"> <br>
+  </font></div>
+<div id="lavat" style="position:absolute; left:237px; top:116px; width:209px; height:260px; z-index:11; visibility: hidden"><img src="internet/lavat.gif" width="209" height="260"></div>
+<div id="lavani" style="position:absolute; left:237px; top:116px; width:209px; height:260px; z-index:12; visibility: hidden"><img src="internet/lavatric.gif" width="209" height="260"></div>
+<div id="mmam" style="position:absolute; left:302px; top:228px; width:142px; height:150px; z-index:8; visibility: hidden"><img src="internet/rotella1.jpg" width="142" height="150"></div>
+<div id="tmam" style="position:absolute; left:110px; top:207px; width:47px; height:81px; z-index:9; visibility: hidden"><img src="internet/macchioo.jpg" width="44" height="75"></div>
+<div id="clessi" style="position:absolute; left:209px; top:94px; width:28px; height:50px; z-index:13; visibility: hidden"><img name="image2" src="internet/clessi.gif" width="28" height="50"></div>
+<div id="frase" style="position:absolute; left:8px; top:210px; width:263px; height:70px; z-index:14; visibility: hidden"><font size="2" color="#006868" face="Verdana, Arial, Helvetica, sans-serif">Approfittiamo 
+  della pausa per ricordarti che il numero verde<b> 800-033-333</b> &egrave; a 
+  tua disposizioneper parlarti di margherita2000.com ed i suoi servizi.</font></div>
+</body>
+</html>

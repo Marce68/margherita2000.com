@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>margherita2000.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_timelinePlay(tmLnName, myID) { //v1.2
+  //Copyright 1997 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,propNum,theObj,firstTime=false;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (myID == null) { myID = ++tmLn.ID; firstTime=true;}//if new call, incr ID
+  if (myID == tmLn.ID) { //if Im newest
+    setTimeout('MM_timelinePlay("'+tmLnName+'",'+myID+')',tmLn.delay);
+    fNew = ++tmLn.curFrame;
+    for (i=0; i<tmLn.length; i++) {
+      sprite = tmLn[i];
+      if (sprite.charAt(0) == 's') {
+        if (sprite.obj) {
+          numKeyFr = sprite.keyFrames.length; firstKeyFr = sprite.keyFrames[0];
+          if (fNew >= firstKeyFr && fNew <= sprite.keyFrames[numKeyFr-1]) {//in range
+            keyFrm=1;
+            for (j=0; j<sprite.values.length; j++) {
+              props = sprite.values[j]; 
+              if (numKeyFr != props.length) {
+                if (props.prop2 == null) sprite.obj[props.prop] = props[fNew-firstKeyFr];
+                else        sprite.obj[props.prop2][props.prop] = props[fNew-firstKeyFr];
+              } else {
+                while (keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]) keyFrm++;
+                if (firstTime || fNew==sprite.keyFrames[keyFrm-1]) {
+                  if (props.prop2 == null) sprite.obj[props.prop] = props[keyFrm-1];
+                  else        sprite.obj[props.prop2][props.prop] = props[keyFrm-1];
+        } } } } }
+      } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+      if (fNew > tmLn.lastFrame) tmLn.ID = 0;
+  } }
+}
+
+function MM_timelineGoto(tmLnName, fNew, numGotos) { //v2.0
+  //Copyright 1997 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,lastKeyFr,propNum,theObj;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (numGotos != null)
+    if (tmLn.gotoCount == null) tmLn.gotoCount = 1;
+    else if (tmLn.gotoCount++ >= numGotos) {tmLn.gotoCount=0; return}
+  jmpFwd = (fNew > tmLn.curFrame);
+  for (i = 0; i < tmLn.length; i++) {
+    sprite = (jmpFwd)? tmLn[i] : tmLn[(tmLn.length-1)-i]; //count bkwds if jumping back
+    if (sprite.charAt(0) == "s") {
+      numKeyFr = sprite.keyFrames.length;
+      firstKeyFr = sprite.keyFrames[0];
+      lastKeyFr = sprite.keyFrames[numKeyFr - 1];
+      if ((jmpFwd && fNew<firstKeyFr) || (!jmpFwd && lastKeyFr<fNew)) continue; //skip if untouchd
+      for (keyFrm=1; keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]; keyFrm++);
+      for (j=0; j<sprite.values.length; j++) {
+        props = sprite.values[j];
+        if (numKeyFr == props.length) propNum = keyFrm-1 //keyframes only
+        else propNum = Math.min(Math.max(0,fNew-firstKeyFr),props.length-1); //or keep in legal range
+        if (sprite.obj != null) {
+          if (props.prop2 == null) sprite.obj[props.prop] = props[propNum];
+          else        sprite.obj[props.prop2][props.prop] = props[propNum];
+      } }
+    } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+  }
+  tmLn.curFrame = fNew;
+  if (tmLn.ID == 0) eval('MM_timelinePlay(tmLnName)');
+}
+
+function MM_showHideLayers() { //v2.0
+  var i, visStr, args, theObj;
+  args = MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) { //with arg triples (objNS,objIE,visStr)
+    visStr   = args[i+2];
+    if (navigator.appName == 'Netscape' && document.layers != null) {
+      theObj = eval(args[i]);
+      if (theObj) theObj.visibility = visStr;
+    } else if (document.all != null) { //IE
+      if (visStr == 'show') visStr = 'visible'; //convert vals
+      if (visStr == 'hide') visStr = 'hidden';
+      theObj = eval(args[i+1]);
+      if (theObj) theObj.style.visibility = visStr;
+  } }
+}
+
+function MM_initTimelines() {
+    //MM_initTimelines() Copyright 1997 Macromedia, Inc. All rights reserved.
+    var ns = navigator.appName == "Netscape";
+    document.MM_Time = new Array(1);
+    document.MM_Time[0] = new Array(2);
+    document.MM_Time["Timeline1"] = document.MM_Time[0];
+    document.MM_Time[0].MM_Name = "Timeline1";
+    document.MM_Time[0].fps = 15;
+    document.MM_Time[0][0] = new String("sprite");
+    document.MM_Time[0][0].slot = 1;
+    if (ns)
+        document.MM_Time[0][0].obj = document["gioco"];
+    else
+        document.MM_Time[0][0].obj = document.all ? document.all["gioco"] : null;
+    document.MM_Time[0][0].keyFrames = new Array(1, 30, 35, 60);
+    document.MM_Time[0][0].values = new Array(2);
+    document.MM_Time[0][0].values[0] = new Array(12,41,70,99,128,157,186,215,244,273,302,331,360,389,417,444,469,494,517,540,561,582,602,621,639,657,674,690,705,720,720,720,720,720,720,703,685,666,646,625,603,580,555,530,503,475,446,415,382,349,315,281,248,214,180,147,113,79,46,12);
+    document.MM_Time[0][0].values[0].prop = "left";
+    document.MM_Time[0][0].values[1] = new Array(357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357,357);
+    document.MM_Time[0][0].values[1].prop = "top";
+    if (!ns) {
+        document.MM_Time[0][0].values[0].prop2 = "style";
+        document.MM_Time[0][0].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][1] = new String("behavior");
+    document.MM_Time[0][1].frame = 61;
+    document.MM_Time[0][1].value = "MM_timelineGoto('Timeline1','1')";
+    document.MM_Time[0].lastFrame = 61;
+    for (i=0; i<document.MM_Time.length; i++) {
+        document.MM_Time[i].ID = null;
+        document.MM_Time[i].curFrame = 0;
+        document.MM_Time[i].delay = 1000/document.MM_Time[i].fps;
+    }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#006868" onLoad="MM_timelinePlay('Timeline1')">
+<div id="Layer1" style="position:absolute; left:139px; top:2px; width:484px; height:101px; z-index:3"><img src="../../sito/it/img/titolohp.gif" width="476" height="99"></div>
+<div id="Layer2" style="position:absolute; left:121px; top:58px; width:505px; height:345px; z-index:2"><img src="../../sito/it/img/hm2.gif" width="505" height="345"></div>
+<div id="Layer4" style="position:absolute; left:10px; top:205px; width:111px; height:22px; z-index:5"><a href="../../sito/it/digital/digital.htm"><img src="../../sito/it/img/aristit.gif" width="111" height="22" border="0"></a></div>
+<div id="Layer5" style="position:absolute; left:283px; top:413px; width:114px; height:20px; z-index:10"><a href="contatta/contatti.htm"><img src="../../sito/it/img/contit.gif" border="0"></a></div>
+<div id="Layer6" style="position:absolute; left:11px; top:407px; width:586px; height:25px; z-index:7; background-image: url(img/filosxhp.gif); layer-background-image: url(img/filosxhp.gif); border: 1px none #000000"></div>
+<div id="Layer7" style="position:absolute; left:610px; top:205px; width:166px; height:27px; z-index:8"><a href="../../sito/it/forum/forum.htm"><img src="../../sito/it/img/fortit.gif" width="166" border="0"></a></div>
+<div id="Layer9" style="position:absolute; left:596px; top:407px; width:164px; height:27px; z-index:11"><img src="../../sito/it/img/fogohp.gif" width="164" height="27"></div>
+<div id="Layer10" style="position:absolute; left:13px; top:412px; width:104px; height:20px; z-index:12"><a href="http://www.aristonchannel.com" target="_blank"><img src="../../sito/it/img/channel.gif" width="104" height="20" border="0"></a></div>
+<div id="gioco" style="position:absolute; left:12px; top:357px; width:54px; height:53px; z-index:13"><a href="http://www.margherita2000.com" onMouseOver="MM_showHideLayers('document.layers[\'t10\']','document.all[\'t10\']','show')" onMouseOut="MM_showHideLayers('document.layers[\'t10\']','document.all[\'t10\']','hide')"><img name="image1" src="../../wrap/it/img/game.gif" width="50" height="50" border="0"></a></div>
+<div id="Layer13" style="position:absolute; left:173px; top:205px; width:129px; height:22px; z-index:14"><a href="../../sito/it/ecco/ecco.htm" target="_top"><img src="../../sito/it/img/eccohp.gif" width="129" height="22" border="0"></a></div>
+<div id="Layer14" style="position:absolute; left:459px; top:205px; width:135px; height:22px; z-index:15"><a href="../../sito/it/simula/simula.htm"><img src="../../sito/it/img/myhp.gif" width="135" height="22" border="0"></a></div>
+<div id="Layer15" style="position:absolute; left:353px; top:179px; width:70px; height:43px; z-index:16"><img src="../../sito/it/img/dpit.gif" width="70" height="43"></div>
+<div id="t10" style="position:absolute; left:583px; top:318px; width:182px; height:32px; z-index:17; visibility: hidden"><img name="image2" src="../../wrap/it/img/t10.gif" width="177" height="30"></div>
+</body>
+</html>
